@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+    ViewData["Title"] = "Not authorized";
+}
+
+@section HeaderSection
+{
+    <section id="hero" class="container">
+        <header>
+            <h2>
+                @ViewData["Title"]
+            </h2>
+        </header>
+        <p>
+            You do not have permission to access this page or perform the above action.
+        </p>
+        <ul class="actions">
+            <li><button onclick="history.back()" class="button btn btn-primary loadingButton">Back</button></li>
+        </ul>
+    </section>
+}
+

@@ -1,0 +1,114 @@
+﻿@model PayWave.Models.PaymentModels.SendPaymentViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+    ViewData["Title"] = "Send money";
+}
+
+@section HeaderSection
+{
+    <section id="hero" class="container">
+        <header>
+            <h2>
+                @ViewData["Title"]
+            </h2>
+        </header>
+        <p>
+            Send money to one of your recipients
+        </p>
+        <ul class="actions">
+            <li><a href="@Url.Action("Index","Payment", null)" class="btn btn-primary loadingButton">Back</a></li>
+            <li><a href="@Url.Action("Index","AddressBook", null)" class="btn btn-info loadingButton">Manage recipients</a></li>
+            @*<li><a href="@Url.Action("SendDeferredSelector","Payment", null)" class="btn btn-success loadingButton" data-bs-toggle="tooltip" data-bs-placement="bottom" title="@Localizer["Envía dinero para ser cobrado en una fecha posterior"]">@Localizer["Enviar dinero diferido"]</a></li>*@
+
+        </ul>
+    </section>
+}
+
+
+<div class="wrapper">
+    <div class="container" id="main">
+        @using (Html.BeginForm())
+        {
+            <div class="row mt-2">
+                <div class="col-md-2">
+                    Account: 
+                </div>
+                <div class="col-md-6">
+                    @Html.DropDownListFor(x => x.Form.OriginWalletId, Model.WalletSelectList, "Select your origin address", new { @class = "form-control" }) <br />
+                    @Html.ValidationMessageFor(x => x.Form.OriginWalletId)
+                </div>
+                <div class="col-md-3">
+                    <div class="alert alert-success" role="alert">
+                        Select the origin account from which you want to send the money
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    Destination account: 
+                </div>
+                <div class="col-md-6">
+                    @Html.DropDownListFor(x => x.Form.RecipientId, Model.Destinations, "Select your recipient", new { @class = "form-control" }) <br />
+                    @Html.ValidationMessageFor(x => x.Form.RecipientId)
+                </div>
+                <div class="col-md-3">
+                    <div class="alert alert-success" role="alert">
+                        Select the destination account where the money will be received
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    Amount:
+                </div>
+                <div class="col-md-6">
+                    @Html.TextBoxFor(x => x.Form.Amount, new { @class = "form-control" }) <br />
+                    @Html.ValidationMessageFor(x => x.Form.Amount)
+                </div>
+                <div class="col-md-3">
+                    <div class="alert alert-success" role="alert">
+                        Enter the amount to send
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    Origin currency:
+                </div>
+                <div class="col-md-6">
+                    @Html.DropDownListFor(x => x.Form.OriginCurrency, Model.Currencies, "Select the currency", new { @class = "form-control" }) <br />
+                    @Html.ValidationMessageFor(x => x.Form.OriginCurrency)
+                </div>
+                <div class="col-md-3">
+                    <div class="alert alert-success" role="alert">
+                        Select the currency for sending the payment
+                    </div>
+                </div>
+            </div>@*
+            <div class="row">
+                <div class="col-md-2">
+                    Destination currency:
+                </div>
+                <div class="col-md-6">
+                    @Html.DropDownListFor(x => x.Form.DestinationCurrency, Model.Currencies, "Select the currency", new { @class = "form-control" }) <br />
+                    @Html.ValidationMessageFor(x => x.Form.DestinationCurrency)
+                </div>
+                <div class="col-md-3">
+                    <div class="alert alert-success" role="alert">
+                        Select the currency for receiving the payment
+                    </div>
+                </div>
+            </div>*@
+
+            <div class="row">
+                <div class="col-md-3">
+                    <br />
+                </div>
+                <div class="form-group col-md-5">
+                    <input type="submit" class="btn btn-primary loadingButton" value="Send" />
+                </div>
+            </div>
+        }
+    </div>
+</div>

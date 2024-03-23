@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="PeerPay - Plataforma de pagos para mil millones de personas">
+    <meta name="author" content="Techgethr">
+    <title>PayWave - @ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/vendors/themify-icons/css/themify-icons.css">
+    <!-- Bootstrap + Rubic main styles -->
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/rubic.css">
+    <link rel="stylesheet" href="~/css/paywave.css">
+    <!-- core  -->
+    <script src="~/js/jquery/jquery-3.4.1.min.js"></script>
+    <script src="~/js/bootstrap/bootstrap.bundle.js"></script>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+    <nav id="scrollspy" class="navbar page-navbar navbar-dark navbar-expand-md fixed-top" data-spy="affix" data-offset-top="20">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><strong class="text-primary">Pay</strong><span class="text-light">Wave</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link loadingButton" asp-area="" asp-controller="Wallet" asp-action="Index">Wallet</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link loadingButton" asp-area="" asp-controller="Payment" asp-action="Index">Transfers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link loadingButton" asp-area="" asp-controller="AddressBook" asp-action="Index">Address book</a>
+                        </li>
+
+
+                    }
+                    else
+                    {
+                        @*<li class="nav-item">
+                            <a class="nav-link loadingButton" asp-area="" asp-controller="Home" asp-action="Privacy">@Localizer["Privacidad"]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link loadingButton" asp-area="" asp-controller="Home" asp-action="Contact">@Localizer["Contacto"]</a>
+                        </li>*@
+                    }
+
+                </ul>
+                <partial name="_LoginPartial" />
+            </div>
+        </div>
+    </nav>
+
+    @RenderBody()
+    <footer class="footer py-4 bg-dark text-light">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-4">
+                    <a class="loadingButton" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a> <br />
+                    <a class="loadingButton" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </div>
+                <div class="col-md-4">
+                    <p class="mb-4 small">
+                        Copyright
+                        <script>document.write(new Date().getFullYear())</script> &copy; PayWave.
+                    </p>
+                </div>
+                <div class="col-md-4 text-right">
+                    
+                </div>
+            </div>
+
+            @*<div class="social-links">
+                    <a href="javascript:void(0)" class="link"><i class="ti-facebook"></i></a>
+                    <a href="javascript:void(0)" class="link"><i class="ti-twitter-alt"></i></a>
+                    <a href="javascript:void(0)" class="link"><i class="ti-google"></i></a>
+                    <a href="javascript:void(0)" class="link"><i class="ti-pinterest-alt"></i></a>
+                    <a href="javascript:void(0)" class="link"><i class="ti-instagram"></i></a>
+                    <a href="javascript:void(0)" class="link"><i class="ti-rss"></i></a>
+                </div>*@
+        </div>
+
+    </footer>
+    <div id="loadingoverlay">
+        <div class="cv-spinner">
+            <span class="spinner"></span>
+        </div>
+    </div>
+    @*<script src="~/js/bootstrap/bootstrap.bundle.js"></script>*@
+    <!-- bootstrap 3 affix -->
+    <script src="~/js/bootstrap/bootstrap.affix.js"></script>
+    <script src="~/js/rubic.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

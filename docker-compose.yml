@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  paywave:
+    image: ${DOCKER_REGISTRY-}paywave
+    build:
+      context: .
+      dockerfile: PayWave/Dockerfile
