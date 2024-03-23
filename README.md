@@ -33,10 +33,6 @@ You need to configure some keys to run this web app.
 1. First, get a Circle API key and update in the appsettings.json (_CircleAPIKey_ variable).
 2. Create a SQL Server database in some server, get the string connection.
 3. Set the docker environment variables _CircleAPIKey_ and _SQLServerDatabaseConnection_ with the keys and connections created.
-4. Run the Entity Framework command to create tables, inside the container.
-
-```sh
-    update-database
-```
+4. Run the Entity Framework command to create tables, inside the container: dotnet ef database update
 5.Deploy in Cartesi [following the instructions](https://github.com/cartesi/DevGuide/tree/main).
 6. Run the web app and start to use it.
